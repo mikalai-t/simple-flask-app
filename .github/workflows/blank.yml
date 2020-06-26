@@ -30,4 +30,5 @@ jobs:
         envvar1: "something1"
       run: |
         echo ${envvar1}
+        echo ${{ secrets.secret1 }}
         
