@@ -10,7 +10,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+
+# This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -19,7 +20,8 @@ jobs:
       - name: Print a secret
         env:
           envvar1: "something1"
+          envvar2: "stg"
         run: |
           echo ${envvar1}
-          echo ${{ fromJson(secrets.SECRET1) }}
+          echo ${{ fromJson(secrets.SECRET1)[envvar2] }}
         
