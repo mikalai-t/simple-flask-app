@@ -20,8 +20,8 @@ jobs:
       - name: Print a secret
         env:
           envvar1: "something1"
-          envvar2: "stg"
+          envvar2: '{ "dev": "hey, i dev", "stg": "im stg" }'
         run: |
           echo ${envvar1}
-          echo ${{ fromJSON(secrets.SECRET1).envvar2 }}
+          echo ${{ env.envvar2 }}
         
