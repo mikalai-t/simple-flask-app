@@ -23,5 +23,5 @@ jobs:
           envvar2: "stg"
         run: |
           echo ${envvar1}
-          echo ${{ secrets.SECRET1.envvar2 }}
+          echo ${{ fromJSON(secrets.SECRET1).envvar2 }}
         
