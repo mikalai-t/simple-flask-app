@@ -23,5 +23,5 @@ jobs:
           envvar2: '{ "dev": "hey, i dev", "stg": "im stg" }'
         run: |
           echo ${envvar1}
-          echo ${{ env.envvar2 }}
+          echo ${{ fromJSON(env.envvar2) }}
         
