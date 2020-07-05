@@ -53,7 +53,7 @@ RUN \
     python -m pip --no-cache install ${WORKDIR}/wheels/*
 
 COPY ext/ ${WORKDIR}/ext/
-COPY main.py ${WORKDIR}/main.py
+COPY *.py ${WORKDIR}/
 
 ENTRYPOINT ["/entrypoint.sh"]
 

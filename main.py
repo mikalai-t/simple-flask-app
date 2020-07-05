@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import config
 import os
 from flask import Flask
 from ext import views
