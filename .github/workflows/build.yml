@@ -23,7 +23,8 @@ jobs:
         # see: https://github.com/marketplace/actions/docker-build-push
       - name: build-and-push
         uses: mr-smithers-excellent/docker-build-push@v3
-        image: lithe-sunset-276809/simple-flask-app
-        registry: eu.gcr.io
-        username: _json_key
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        with:
+          image: lithe-sunset-276809/simple-flask-app
+          registry: eu.gcr.io
+          username: _json_key
+          password: ${{ secrets.DOCKER_PASSWORD }}
