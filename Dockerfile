@@ -63,7 +63,7 @@ CMD ["gunicorn", \
      "--chdir", "${WORKDIR}", \
      "--access-logfile", "-", \
      "--error-logfile", "-", \
-     "-w", "2", \
+     "-w", "$(( 2 * `nproc` + 1 ))", \
      "--threads", "2", \
      "-b", "0.0.0.0:5000", \
      "main:app"]
