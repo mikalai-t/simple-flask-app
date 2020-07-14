@@ -8,7 +8,19 @@ from flask import jsonify, request, Response
 
 def home_page():
     req_dict = request.__dict__
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(('10.255.255.255', 1))
+        req_dict['ip_address'] = s.getsockname()[0]
+    except ConnectionError:
+        req_dict['ip_address'] = socket.gethostbyname_ex(socket.gethostname())[-1]
+    finally:
+        s.close()
+
+    req_dict['hostname'] = socket.gethostname()
     req_json = pprint.PrettyPrinter().pformat(req_dict)
+
     return Response(req_json, mimetype='application/json'), 200
 
 
@@ -39,5 +51,5 @@ def hello(name):
     except (IOError, FileNotFoundError, PermissionError):
         pass
 
-    return 'Hello, <b>{}</b>, from application, running on <u>{}</u>. You visited this app <b>{}</b> time(s).'.format(
+    return 'Hello, <b>{}</b>, from application, running on <u>{}</u>. You visited this node <b>{}</b> time(s).'.format(
         name, socket.gethostname(), counter)
